@@ -155,6 +155,13 @@ export class CompanyController {
   }
 
   @Delete(':id')
+  @ApiResponse({
+    status: 200,
+    description: 'The record has been updated succesfully.',
+    schema: {
+      allOf: [{ $ref: getSchemaPath(ResponseDto) }],
+    },
+  })
   async remove(@Param('id') id: string) {
     await this.companyService.remove(+id);
     return {
