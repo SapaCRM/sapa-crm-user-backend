@@ -3,8 +3,7 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { CreateCompanyDto } from './dto/create-company.dto';
-import { UpdateCompanyDto } from './dto/update-company.dto';
+import { CreateCompanyDto } from './dto/request/create-company.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Company } from './entities/company.entity';
 import { MongoRepository } from 'typeorm';
@@ -12,7 +11,8 @@ import * as bcrypt from 'bcryptjs';
 import { BCRYPT_HASH_ROUND } from 'src/utils/constants';
 import { decryptApiKey, generateApiKey } from 'src/utils/helpers';
 import { ConfigService } from '@nestjs/config';
-import { SetupCompanyDto } from './dto/setup-company.dto';
+import { UpdateCompanyDto } from './dto/request/update-company.dto';
+import { SetupCompanyDto } from './dto/request/setup-company.dto';
 
 @Injectable()
 export class CompanyService {
